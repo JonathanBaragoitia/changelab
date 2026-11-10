@@ -1,0 +1,14 @@
+# Only project sources required for build/verification enter the context.
+*
+!Dockerfile
+!package.json
+!package-lock.json
+!tsconfig.json
+!.prettierrc.json
+!.prettierignore
+!src/
+!src/**
+!public/
+!public/**
+!tests/
+!tests/**

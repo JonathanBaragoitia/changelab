@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="/theme.js"></script>
+    <title>Tu carrito · Norte AutoCare</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/storefront.css" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script type="module" src="/storefront.js"></script>
+  </head>
+  <body class="storefront cart-page">
+    <header class="store-header">
+      <a href="/tienda" class="store-brand">NORTE <span>AUTOCARE</span></a>
+      <nav aria-label="Tienda">
+        <label class="theme-control"
+          >Tema<select data-theme-select aria-label="Tema de apariencia">
+            <option value="light">Claro</option>
+            <option value="dark">Oscuro</option>
+          </select></label
+        ><a href="/tienda">Volver a la tienda</a><a href="/carrito" data-basket-link>Carrito</a
+        ><a href="/tienda#how-to-buy">Cómo comprar</a>
+        <a href="/mis-pedidos">Mis pedidos</a>
+        <a id="customer-account-link" href="#customer-account">Iniciar sesión</a>
+      </nav>
+    </header>
+    <main class="store-main">
+      <p id="message" role="status" aria-live="polite"></p>
+      <section class="store-hero">
+        <p class="eyebrow">LIMPIEZA PROFESIONAL DEL AUTOMÓVIL</p>
+        <h1>Cuida cada detalle.</h1>
+        <p>Lavado, interior y acabado para talleres y aficionados al cuidado del automóvil.</p>
+      </section>
+      <section
+        id="customer-account"
+        hidden
+        class="panel panel-body"
+        aria-label="Cuenta de cliente"
+      ></section>
+      <section id="shopping-assistant"></section>
+      <div class="store-layout">
+        <section id="products" class="panel panel-body">
+          <h2>Catálogo</h2>
+          <div class="catalog-search">
+            <label class="field"
+              >Buscar producto<input
+                id="search"
+                type="search"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded="false"
+                aria-controls="catalog-suggestions"
+                autocomplete="off"
+                placeholder="Busca champú, cera, microfibra…"
+            /></label>
+            <ul
+              id="catalog-suggestions"
+              class="catalog-suggestions"
+              role="listbox"
+              aria-label="Sugerencias de productos"
+              hidden
+            ></ul>
+          </div>
+          <p id="catalog-search-status" class="search-status" role="status" aria-live="polite"></p>
+          <label class="field"
+            >Categoría<select id="category">
+              <option value="">Todas las categorías</option>
+            </select></label
+          >
+          <p>Abre una categoría para ver sus productos o utiliza el buscador.</p>
+          <div id="product-list" class="catalog-folders">Cargando productos…</div>
+        </section>
+        <section id="basket" class="panel panel-body">
+          <h1>Tu carrito</h1>
+          <nav class="basket-tabs" aria-label="Compras">
+            <a href="/carrito" aria-current="page">Carrito</a
+            ><a href="/mis-pedidos">Mis pedidos e historial</a>
+          </nav>
+          <div id="cart"></div>
+          <form id="checkout">
+            <h3>Datos de entrega</h3>
+            <label class="field"
+              >Nombre<input
+                name="name"
+                minlength="2"
+                maxlength="100"
+                required
+                placeholder="Cliente de prueba" /></label
+            ><label class="field"
+              >Correo<input
+                name="email"
+                type="email"
+                maxlength="150"
+                required
+                placeholder="cliente@example.com" /></label
+            ><label class="field"
+              >Dirección<input
+                name="address"
+                minlength="8"
+                maxlength="300"
+                required
+                placeholder="Calle de Prueba 1, Madrid" /></label
+            ><button class="primary" type="submit" id="confirm">Continuar al pago</button>
+            <p>Revisa el resumen antes de pagar.</p>
+          </form>
+        </section>
+      </div>
+      <section id="how-to-buy" class="panel panel-body">
+        <h2>Cómo comprar</h2>
+        <ol class="buying-steps">
+          <li>
+            <strong>Encuentra lo que necesitas.</strong> Abre una categoría, busca un producto o
+            consulta el asistente.
+          </li>
+          <li>
+            <strong>Consulta su ficha y añádelo al carrito.</strong> Revisa el uso recomendado, el
+            precio y las unidades disponibles.
+          </li>
+          <li>
+            <strong>Revisa el total y completa tus datos.</strong> En esta demostración utiliza
+            datos ficticios; verás el IVA desglosado antes de confirmar.
+          </li>
+          <li>
+            <strong>Confirma el pedido.</strong> Aquí puedes probar el proceso sin pagos ni envíos
+            reales y consultar después su estado.
+          </li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

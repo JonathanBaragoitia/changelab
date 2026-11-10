@@ -1,0 +1,35 @@
+{
+  "name": "changelab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.12.0 <25"
+  },
+  "scripts": {
+    "mail:worker": "node --env-file-if-exists=.env src/mail-worker.ts",
+    "dev": "node --env-file-if-exists=.env --watch src/server.ts",
+    "demo:tfm": "node src/scenarios/defense.ts",
+    "start": "node --env-file-if-exists=.env src/server.ts",
+    "test": "node --test tests/*.test.ts tests/*.test.mjs",
+    "typecheck": "tsc --project tsconfig.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run format:check && npm test",
+    "evaluate:local": "node --env-file-if-exists=.env src/evaluation/run.ts",
+    "users:create": "node --env-file-if-exists=.env src/setup-users.ts",
+    "evaluate:business": "node --env-file-if-exists=.env src/evaluation/business-run.ts",
+    "db:backup": "node --env-file-if-exists=.env src/db-tools.ts backup",
+    "db:restore": "node --env-file-if-exists=.env src/db-tools.ts restore",
+    "evaluate:operations": "node --env-file-if-exists=.env src/evaluation/operations-run.ts",
+    "evaluate:review": "node --env-file-if-exists=.env src/evaluation/review-run.ts"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "pdfjs-dist": "6.4.299"
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="/theme.js"></script>
+    <title>Mis pedidos · Norte AutoCare</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/storefront.css" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script type="module" src="/customer-orders.js"></script>
+  </head>
+  <body class="storefront">
+    <header class="store-header">
+      <a href="/tienda" class="store-brand">NORTE <span>AUTOCARE</span></a>
+      <nav aria-label="Pedidos">
+        <label class="theme-control"
+          >Tema<select data-theme-select aria-label="Tema de apariencia">
+            <option value="light">Claro</option>
+            <option value="dark">Oscuro</option>
+          </select></label
+        >
+        <a href="/tienda">Volver a la tienda</a><a href="/carrito">Carrito</a>
+        <a href="/mis-pedidos" aria-current="page">Mis pedidos</a>
+      </nav>
+    </header>
+    <main class="store-main">
+      <section class="panel panel-body" aria-labelledby="orders-title">
+        <h1 id="orders-title">Mis pedidos e historial</h1>
+        <nav class="basket-tabs" aria-label="Compras">
+          <a href="/carrito">Carrito</a
+          ><a href="/mis-pedidos" aria-current="page">Mis pedidos e historial</a>
+        </nav>
+        <p>Consulta el detalle y el estado de tus compras.</p>
+        <button type="button" class="chip" id="refresh-orders">Actualizar estado</button>
+        <p id="orders-status" role="status" aria-live="polite"></p>
+        <div id="order-list"></div>
+      </section>
+    </main>
+  </body>
+</html>

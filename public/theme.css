@@ -1,0 +1,273 @@
+:root {
+  color-scheme: light;
+}
+.theme-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.theme-control select {
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #c5d1c8;
+  border-radius: 8px;
+  background: #fff;
+  color: #203631;
+  font: inherit;
+  cursor: pointer;
+}
+@media screen {
+  html[data-theme='dark'] {
+    color-scheme: dark;
+    --green: #80caa8;
+    --muted: #b4c4bb;
+    --border: #3a5046;
+    --paper: #17231f;
+    --theme-bg: #101916;
+    --theme-surface: #17231f;
+    --theme-alt: #203229;
+    --theme-text: #edf4ef;
+    --theme-muted: #bdcec3;
+    background: var(--theme-bg);
+    color: var(--theme-text);
+  }
+  html[data-theme='dark'] body {
+    background: var(--theme-bg);
+    color: var(--theme-text);
+  }
+  html[data-theme='dark']
+    :is(
+      .panel,
+      .shop-product,
+      .order,
+      .product-dialog,
+      .draft-page,
+      .commercial-disclosure,
+      .commercial-signal,
+      .audit-entry,
+      .scenario,
+      .scenario-metrics > div,
+      .stat
+    ) {
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    border-color: var(--border);
+  }
+  html[data-theme='dark'] :is(.topbar, .store-header) {
+    background: #14201b;
+    color: var(--theme-text);
+    border-color: var(--border);
+  }
+  html[data-theme='dark'] :is(input, select, textarea) {
+    background: #101c16;
+    color: var(--theme-text);
+    border-color: #536c5d;
+  }
+  html[data-theme='dark'] :is(input, textarea)::placeholder {
+    color: #a7b9ac;
+    opacity: 1;
+  }
+  html[data-theme='dark'] input[type='checkbox'],
+  html[data-theme='dark'] input[type='radio'] {
+    accent-color: #80caa8;
+  }
+  html[data-theme='dark'] :is(button, .chip, .disclosure-action, .commercial-count, .step) {
+    background: var(--theme-alt);
+    color: var(--theme-text);
+    border-color: var(--border);
+  }
+  html[data-theme='dark'] button:hover:not(:disabled),
+  html[data-theme='dark'] .chip:hover {
+    background: #304b3c;
+  }
+  html[data-theme='dark'] .tariff-tabs button[aria-pressed='true']:hover:not(:disabled) {
+    background: #96d2ad;
+    color: #12291b;
+  }
+  html[data-theme='dark'] .primary {
+    background: #80caa8;
+    color: #10271c;
+  }
+  html[data-theme='dark'] .audit-entry p {
+    color: var(--theme-muted);
+  }
+  html[data-theme='dark'] .primary:hover:not(:disabled) {
+    background: #9bdcba;
+  }
+  html[data-theme='dark'] .sidebar {
+    background: #0e231c;
+  }
+  html[data-theme='dark'] .sidebar .nav-item {
+    background: transparent;
+    color: #c3d5c9;
+  }
+  html[data-theme='dark'] .sidebar .nav-item.active,
+  html[data-theme='dark'] .sidebar .nav-item:hover {
+    background: #2c4b3b;
+    color: #f1f8f3;
+  }
+  html[data-theme='dark']
+    :is(
+      .heading p,
+      .store-hero p,
+      .order p,
+      .proposal small,
+      .hint,
+      .button-note,
+      .subtle,
+      .stat-label,
+      .stat small,
+      .breadcrumb,
+      .local-badge,
+      .analysis-method,
+      .signal-source,
+      .search-status,
+      .catalog-suggestions span,
+      .simulation-footer small,
+      .draft-page small,
+      footer
+    ) {
+    color: var(--theme-muted);
+  }
+  html[data-theme='dark']
+    :is(
+      .breadcrumb strong,
+      .stat strong,
+      .detail-head,
+      .new-price,
+      .sku,
+      .rule-list b,
+      .rule-list h3,
+      .shop-product small,
+      .identity,
+      .identity select
+    ) {
+    color: var(--theme-text);
+  }
+  html[data-theme='dark']
+    :is(
+      .demo-notice,
+      .notice,
+      .ai-planner,
+      .commercial-ai,
+      .instruction,
+      .detail p.instruction,
+      .document-source,
+      .review-stages li,
+      .check,
+      .audit-outcome,
+      .audit-change,
+      .rule-list,
+      .digest code,
+      .avatar
+    ) {
+    background: var(--theme-alt);
+    color: var(--theme-muted);
+    border-color: var(--border);
+  }
+  html[data-theme='dark'] :is(.demo-notice strong, .eyebrow, .rule-icon, .check > span) {
+    color: #a2e0bc;
+  }
+  html[data-theme='dark'] :is(.proposal, .commercial-disclosure > summary) {
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    border-color: var(--border);
+  }
+  html[data-theme='dark']
+    :is(.proposal.selected, .proposal:hover, .commercial-disclosure > summary:hover) {
+    background: var(--theme-alt);
+  }
+  html[data-theme='dark'] .commercial-disclosure > summary small {
+    color: var(--theme-muted);
+  }
+  html[data-theme='dark']
+    :is(
+      table,
+      th,
+      td,
+      .panel-title,
+      .detail,
+      .detail-footer,
+      .simulation-footer,
+      .purchase-line,
+      .shop-cart-row
+    ) {
+    border-color: var(--border);
+  }
+  html[data-theme='dark'] th {
+    color: var(--theme-muted);
+    background: #203229;
+  }
+  html[data-theme='dark'] .catalog-suggestions {
+    background: #172a20;
+    border-color: #6a8c75;
+    box-shadow: 0 12px 28px #0007;
+  }
+  html[data-theme='dark'] .catalog-suggestions [role='option']:hover,
+  html[data-theme='dark'] .catalog-suggestions [aria-selected='true'] {
+    background: #304e3b;
+  }
+  html[data-theme='dark'] :is(.badge.ready, .badge.applied) {
+    background: #254735;
+    color: #c2efd1;
+  }
+  html[data-theme='dark']
+    :is(
+      .badge.blocked,
+      .badge.stale,
+      .catalog-load-error,
+      .draft-warning,
+      .risk-row,
+      .check.bad,
+      .audit-findings
+    ) {
+    background: #392d1c;
+    color: #ffda9d;
+    border-color: #957846;
+  }
+  html[data-theme='dark'] :is(.form-error, [role='alert'], .risk-label) {
+    color: #ffb7a9;
+  }
+  html[data-theme='dark'] #toast {
+    background: #254735;
+    color: #edf4ef;
+  }
+  html[data-theme='dark'] #toast.error {
+    background: #6a2924;
+    color: #fff1ed;
+  }
+  html[data-theme='dark'] :is(button, a, input, select, textarea, summary):focus-visible {
+    outline-color: #addbff;
+  }
+  html[data-theme='dark'] .product-dialog::backdrop {
+    background: #000b;
+  }
+}
+@media (max-width: 600px) {
+  .top-actions {
+    gap: 10px;
+  }
+  .theme-control {
+    font-size: 12px;
+  }
+  .theme-control select {
+    min-height: 44px;
+  }
+  .store-header nav {
+    align-items: center;
+  }
+}
+@media print {
+  .theme-control {
+    display: none !important;
+  }
+  html,
+  body,
+  .draft-page {
+    color-scheme: light;
+    background: #fff;
+    color: #111;
+  }
+}

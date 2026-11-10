@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="/theme.js"></script>
+    <title>Borrador · Norte AutoCare</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/draft.css" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script type="module" src="/draft.js"></script>
+  </head>
+  <body>
+    <main class="draft-page">
+      <nav class="no-print">
+        <a href="/">Volver a gestión</a
+        ><label class="theme-control"
+          >Tema<select data-theme-select aria-label="Tema de apariencia">
+            <option value="light">Claro</option>
+            <option value="dark">Oscuro</option>
+          </select></label
+        >
+        <button id="print" class="chip" disabled>Imprimir / guardar como PDF</button>
+      </nav>
+      <article id="document" aria-live="polite">Cargando borrador…</article>
+    </main>
+  </body>
+</html>

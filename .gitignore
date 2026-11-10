@@ -1,0 +1,12 @@
+data/
+.env
+node_modules/
+coverage/
+*.log
+.npm-cache/
+
+.qa-*
+.task-*
+
+# Capturas históricas locales pendientes de revisión individual.
+/docs/**/*.png

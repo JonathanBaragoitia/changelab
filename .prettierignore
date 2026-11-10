@@ -1,0 +1,9 @@
+node_modules/
+.npm-cache/
+data/
+coverage/
+package-lock.json
+docs/*.png
+
+.qa-*
+.task-*

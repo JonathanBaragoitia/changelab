@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "name": "ChangeLab",
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.npm-cache": true,
+      "**/.qa-*": true,
+      "**/.task-*": true,
+      "**/coverage": true,
+      "**/data": true,
+      "**/node_modules": true,
+    },
+    "search.exclude": {
+      "**/docs/revision-*/**": true,
+      "**/docs/evaluations/**": true,
+    },
+    "files.watcherExclude": {
+      "**/.npm-cache/**": true,
+      "**/coverage/**": true,
+      "**/data/**": true,
+      "**/node_modules/**": true,
+    },
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "ChangeLab: comprobar proyecto",
+        "type": "shell",
+        "command": "npm run check",
+        "options": { "cwd": "${workspaceFolder:ChangeLab}" },
+        "group": { "kind": "test", "isDefault": true },
+        "problemMatcher": ["$tsc"],
+      },
+    ],
+  },
+}

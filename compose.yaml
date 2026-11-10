@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      target: runtime
+    image: changelab:local
+    ports:
+      - '127.0.0.1:${CHANGELAB_HTTP_PORT:-4320}:4317'
+    environment:
+      CHANGELAB_HOST: '0.0.0.0'
+      CHANGELAB_DB: /app/data/changelab.sqlite
+      CHANGELAB_MODEL: ${CHANGELAB_MODEL:-qwen3:4b-instruct}
+      CHANGELAB_OLLAMA_URL: ${CHANGELAB_OLLAMA_URL:-http://host.docker.internal:11434}
+    volumes:
+      - changelab-data:/app/data
+    extra_hosts:
+      - 'host.docker.internal=host-gateway'
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    init: true
+    stop_grace_period: 15s
+    pids_limit: 128
+    mem_limit: 1g
+volumes:
+  changelab-data:

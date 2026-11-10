@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#112b27" />
+    <script src="/theme.js"></script>
+    <title>ChangeLab · Cambios con criterio</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Ir al contenido</a>
+    <aside class="sidebar">
+      <a class="brand" href="/"
+        ><span class="brand-mark">C<span>↗</span></span
+        ><span>ChangeLab<small>OPERATIONS WORKSPACE</small></span></a
+      >
+      <div class="workspace">
+        <span class="workspace-symbol">N</span>
+        <div>Norte · AutoCare<small>Limpieza del automóvil</small></div>
+        <span class="dot"></span>
+      </div>
+      <p class="nav-label">ESPACIO DE TRABAJO</p>
+      <a class="nav-item" href="/tienda" target="_blank" rel="noopener"
+        >↗ Abrir tienda en otra pestaña</a
+      >
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-controls="main-navigation"
+        aria-expanded="false"
+      >
+        Mostrar navegación
+      </button>
+      <nav id="main-navigation" aria-label="Principal">
+        <button data-tab="proposals" class="nav-item active">
+          <span>▦</span>Propuestas<span class="nav-count" id="nav-count">0</span>
+        </button>
+        <button data-tab="shop" class="nav-item"><span>▧</span>Pedidos</button>
+        <button data-tab="warehouse" class="nav-item"><span>▦</span>Almacén</button>
+        <button data-tab="shipping" class="nav-item">
+          <span>↗</span>Envíos <span id="dispatch-notice-count" class="nav-count" hidden></span>
+        </button>
+        <button data-tab="mail" class="nav-item"><span>✉</span>Correos a clientes</button>
+        <button data-tab="billing" class="nav-item"><span>▤</span>Facturación</button>
+        <button data-tab="reconciliation" class="nav-item">
+          <span>⇄</span>Comprobación de pedidos y cobros
+        </button>
+        <button data-tab="catalog" class="nav-item"><span>▤</span>Catálogo</button>
+        <button data-tab="economics" class="nav-item"><span>€</span>Control económico</button>
+        <button data-tab="approvals" class="nav-item">
+          <span>✓</span>Solicitudes y aprobaciones
+        </button>
+        <button data-tab="cash" class="nav-item"><span>↔</span>Cobros y pagos</button>
+        <button data-tab="suppliers" class="nav-item"><span>▣</span>Proveedores</button>
+        <button data-tab="tariffs" class="nav-item"><span>⇧</span>Tarifas de proveedores</button>
+        <button data-tab="campaigns" class="nav-item"><span>◈</span>Campañas</button>
+        <button data-tab="business" class="nav-item">
+          <span>✦</span>Análisis comercial IA<span
+            id="stock-warning-count"
+            class="badge blocked"
+            hidden
+            title="Artículos agotados o en punto de reposición"
+          ></span>
+        </button>
+        <button data-tab="daily" class="nav-item"><span>☷</span>Bandeja diaria</button>
+        <button data-tab="purchases" class="nav-item"><span>▣</span>Compras</button>
+        <button data-tab="returns" class="nav-item">
+          <span>↩</span>Devoluciones y reclamaciones
+        </button>
+        <button data-tab="transport" class="nav-item"><span>⚠</span>Roturas en transporte</button>
+        <button data-tab="audit" class="nav-item"><span>◷</span>Historial</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-emblem">⤴</div>
+        <h3>Primero comprueba.<br />Después publica.</h3>
+        <p>Cada cambio tiene un alcance, una revisión y un registro.</p>
+        <div class="version"><span class="dot"></span>Primer incremento · v0.1</div>
+      </div>
+    </aside>
+    <div class="page">
+      <header class="topbar">
+        <div class="breadcrumb">
+          Norte <span>/</span> Operaciones <span>/</span> <strong id="crumb">Propuestas</strong>
+        </div>
+        <div class="top-actions">
+          <label id="data-space-control" class="theme-control" hidden
+            >Datos<select id="data-space" aria-label="Espacio de datos">
+              <option value="regular">Datos habituales</option>
+              <option value="month">Octubre 2026 · mes simulado</option>
+            </select></label
+          >
+          <label class="theme-control"
+            >Tema<select data-theme-select aria-label="Tema de apariencia">
+              <option value="light">Claro</option>
+              <option value="dark">Oscuro</option>
+            </select></label
+          >
+          <span class="local-badge"><span class="dot"></span>Entorno local</span
+          ><button
+            id="refresh"
+            class="icon-button"
+            aria-label="Actualizar datos"
+            title="Actualizar datos"
+          >
+            ↻
+          </button>
+          <div class="identity">
+            <span class="avatar" id="avatar">—</span
+            ><a id="account-name" class="chip" href="/gestion?login=1">Iniciar sesión</a
+            ><button id="logout" class="chip" hidden>Cerrar sesión</button>
+          </div>
+        </div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="demo-notice">
+          <span>LAB</span><strong id="scenario-label" hidden></strong>
+          <p>
+            Suministros de limpieza y cuidado del automóvil · catálogo ficticio · cuentas
+            individuales con permisos de servidor.
+            <strong id="planner-status">Comprobando el modelo local…</strong>
+          </p>
+        </div>
+        <details id="staff-notices" class="panel commercial-disclosure" hidden></details>
+        <div id="screen"><div class="loading">Cargando el espacio de trabajo…</div></div>
+        <footer>
+          ChangeLab <span>Un cambio bien revisado deja huella.</span
+          ><span>Demostración local · IA con Ollama en tu equipo</span>
+        </footer>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
