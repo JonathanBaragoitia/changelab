@@ -8,7 +8,7 @@ El documento de Proyecto Final M0645 pide README, código en GitHub, presentaci�
 | Tarifas e IA        | PDF de prueba recorrido en navegador. La oferta de compra se aprueba por separado del precio de venta. Se comprobó el recálculo y, en API, el respaldo cuando Ollama falla. |
 | Operaciones         | Anulación de recepción vinculada, baja de devoluciones dañadas y resultados documentales de reclamaciones cubiertos por pruebas dirigidas.                                  |
 | Código y README     | Publicados en [GitHub](https://github.com/JonathanBaragoitia/changelab). El repositorio contiene las fuentes y la documentación de entrega.                                 |
-| Presentación        | Siete diapositivas actualizadas en la presentación de la conversación.                                                                                                      |
+| Presentación        | [Presentación editable (PowerPoint)](ChangeLab-presentacion.pptx).                                                                                                          |
 | Vídeo               | [Guion de grabación](guia-demostracion.md) con recorrido y tiempos. Pendiente de grabar con la explicación del alumno.                                                      |
 | GitHub y despliegue | El repositorio es público. La demo funciona localmente.                                                                                                                     |
 

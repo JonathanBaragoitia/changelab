@@ -17,4 +17,4 @@ La especificación inicial conserva CA01–CA10. Esta tabla orienta la defensa; 
 
 Ampliación comercial: commerce-journey.test.ts conecta compra invitada, stock, estados, documento, cobro, devolución, rectificación, reembolso/corrección y conciliación. Usa puerto efímero y base aislada. No equivale a una prueba automática de todas las interacciones visuales.
 
-Requisitos oficiales de entrega y pendientes: entrega-tfm.md. Conceptos docentes aplicados y decisiones propias: arquitectura-actual.md y el índice de materiales en ../outputs del espacio superior. Los requisitos fiscales o de producción no se deducen de esta matriz.
+Requisitos oficiales de entrega y pendientes: entrega-tfm.md. Conceptos docentes aplicados y decisiones propias: arquitectura-actual.md. Los requisitos fiscales o de producción no se deducen de esta matriz.

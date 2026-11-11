@@ -56,6 +56,6 @@ Parar y recrear el contenedor conserva el volumen; eliminar un volumen elimina s
 
 ## Evidencias de esta revisión
 
-Se utilizó el proyecto de prueba changelab-review, independiente del volumen que creará el arranque normal. Se comprobó arranque saludable, UID 1000, conexión con Ollama y su digest, copia SQLite, persistencia tras reinicio y ausencia de cuentas predeterminadas. Ver [registro](revision-20261029/docker.json). Al cerrar la revisión se para ese proyecto; los volúmenes se conservan.
+Se utilizó el proyecto de prueba changelab-review, independiente del volumen que creará el arranque normal. Se comprobó arranque saludable, UID 1000, conexión con Ollama y su digest, copia SQLite, persistencia tras reinicio y ausencia de cuentas predeterminadas. Ver [revisión de entrega](revision-entrega.md). Al cerrar la revisión se para ese proyecto; los volúmenes se conservan.
 
 Referencia docente: M0458, Docker Hub, y la unidad de contenerización inventariada. Configuración contrastada con [servicios de Compose](https://docs.docker.com/reference/compose-file/services/) y [redes de Compose](https://docs.docker.com/compose/how-tos/networking/). No se ha hecho push de imágenes ni publicado un repositorio.

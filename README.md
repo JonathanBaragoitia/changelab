@@ -88,4 +88,4 @@ La imagen de verificación ejecuta `npm run check`. Compose publica el puerto 43
 
 El alcance es una demostración local con catálogo ficticio, documentos sin validez fiscal y pagos de demostración. El abono de proveedor es documental. El margen es una estimación por artículo y la utilidad comercial queda por validar con usuarios. Los PDF escaneados requieren texto obtenido mediante OCR externo.
 
-[Revisión de entrega](docs/revision-entrega.md) · [Guion de defensa](docs/guia-demostracion.md) · [Presentación](docs/presentacion-tfm.md) · [Estado de entrega](docs/entrega-tfm.md) · [Dependencias de terceros](docs/dependencias-terceros.md).
+[Revisión de entrega](docs/revision-entrega.md) · [Guion de defensa](docs/guia-demostracion.md) · [Presentación (PowerPoint)](docs/ChangeLab-presentacion.pptx) · [Estado de entrega](docs/entrega-tfm.md) · [Dependencias de terceros](docs/dependencias-terceros.md).

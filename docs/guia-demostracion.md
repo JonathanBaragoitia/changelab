@@ -1,6 +1,6 @@
 # Guion de la defensa de ChangeLab
 
-Duración orientativa de 5 a 6 minutos. Ejecuta `npm run demo:tfm` en la carpeta de ChangeLab y abre `http://127.0.0.1:4323/gestion`. Las cuentas de Oficina, Dirección y Almacén aparecen en la terminal con contraseñas nuevas cada vez. Inicia sesión antes de capturar la ventana del navegador. La base ficticia se reinicia al cerrar el proceso.
+Duración orientativa de 5 a 6 minutos. Ejecuta `npm run demo:tfm` en la carpeta de ChangeLab y abre `http://127.0.0.1:4323/gestion`. Las cuentas de Oficina, Dirección y Almacén aparecen en la terminal con contraseñas nuevas cada vez. Inicia sesión con cada cuenta por separado y antes de capturar la ventana del navegador. La base ficticia se reinicia al cerrar el proceso.
 
 | Tiempo    | En pantalla                        | Qué explicar                                                                                                                                                                                                                                                                                |
 | --------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,7 +10,5 @@ Duración orientativa de 5 a 6 minutos. Ejecuta `npm run demo:tfm` en la carpeta
 | 2:50–3:40 | Revisión con demo-antonio          | Consulta la propuesta y aplica la tarifa ficticia. Comprueba que la oferta del proveedor cambia. Muestra el aviso de desactualización y recalcula. La autorización de un precio de venta es una operación separada.                                                                         |
 | 3:40–4:40 | VS Code y resultado de las pruebas | Señala `src/application/tariff-proposal.ts` para la simulación y `tests/tariff-decision-http.test.ts` para permisos y concurrencia. Muestra el resultado de `npm run check`.                                                                                                                |
 | 4:40–5:30 | Presentación y cierre              | Explica los límites. Es un escenario con datos ficticios, margen unitario y pagos de demostración. La utilidad comercial se tendría que validar con usuarios.                                                                                                                               |
-
-Si quieres mostrar el umbral de margen, crea una **segunda tarifa ficticia en una sesión recién iniciada** con `NA-001;70,00`. Desde un coste de 49,00 €, mantener 79,90 € deja 12,39 % y conservar el margen de referencia requiere 114,15 € netos. Así los importes coinciden con la presentación.
 
 Graba tu propia explicación con la ventana de ChangeLab y el editor. Cierra las notificaciones y cualquier pestaña personal antes de compartir pantalla. Revisa el vídeo antes de enviarlo y añade el enlace de entrega cuando esté disponible.

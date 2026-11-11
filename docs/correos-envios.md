@@ -63,7 +63,7 @@ Cada petición usa el identificador persistente del mensaje como clave de idempo
 
 Se ha contrastado el contrato de envío con la [API oficial](https://resend.com/docs/api-reference/emails/send-email). Las pruebas usan un transporte controlado: no equivalen a una entrega real con una cuenta verificada. No se ha implementado recepción de buzón, notificaciones de rebote, confirmaciones de entrega por webhook ni integración con empresas de transporte.
 
-Los mensajes se guardan en la base privada del proyecto y la consulta de oficina muestra los últimos 100. Las capturas de esta revisión contienen información de la prueba del usuario y permanecen en `data/reviews/20261105/`, ignoradas por Git.
+Los mensajes se guardan en la base privada del proyecto y la consulta de oficina muestra los últimos 100.
 
 ## Comprobaciones
 
@@ -71,4 +71,4 @@ Los mensajes se guardan en la base privada del proyecto y la consulta de oficina
 
 Antes de activar el servicio se hicieron copias SQLite verificadas de ambas bases. Comparación posterior: productos, inventario y pedidos idénticos; quick_check correcto, cero referencias rotas y auditoría válida. Para el pedido actual se prepararon únicamente dos copias de revisión, sin envío externo. Verificación visual de los datos en Mis pedidos y de ambos correos en la cuenta de Ana.
 
-Referencias docentes: [M0001, casos de uso](../../outputs/textos/M0001.txt), [M0122, pruebas](../../outputs/textos/M0122.txt), [M0630, seguridad de APIs](../../outputs/textos/M0630.txt). Las reglas de avisar al recoger, mostrar la expedición y preparar correo transaccional son requisitos del usuario; el proveedor y el diseño de outbox son decisiones de implementación.
+Referencias docentes: M0001, casos de uso, M0122, pruebas, M0630, seguridad de APIs. Las reglas de avisar al recoger, mostrar la expedición y preparar correo transaccional son requisitos del usuario; el proveedor y el diseño de outbox son decisiones de implementación.

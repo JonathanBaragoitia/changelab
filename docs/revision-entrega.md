@@ -27,4 +27,4 @@ M0653 sirve de referencia para separar las reglas de los adaptadores. M0654 expl
 
 El nuevo material de skills y MCP se consultó para distinguir las herramientas de desarrollo del código de la tienda. ChangeLab mantiene pasos, permisos y responsables definidos en sus casos de uso. Los originales docentes se consultaron en lectura.
 
-Las comprobaciones de navegador cubren apertura y recorridos seleccionados. Los ensayos de IA son sintéticos. Los pagos y documentos son de demostración. La entrega todavía requiere la grabación del alumno y la publicación del repositorio elegido.
+Las comprobaciones de navegador cubren apertura y recorridos seleccionados. Los ensayos de IA son sintéticos. Los pagos y documentos son de demostración. El código está publicado en GitHub. El vídeo de entrega requiere la explicación del alumno.
