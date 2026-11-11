@@ -1,6 +1,6 @@
 # Arquitectura actual
 
-Estado al 28/10/2026. Monolito modular local, no arquitectura distribuida. Implementación propia con referencias M0001/M0021; la elección de SQLite/Node HTTP y los límites del caso son decisiones del proyecto.
+ChangeLab usa un monolito modular con Node.js y SQLite.
 
 ```mermaid
 flowchart LR

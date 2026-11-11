@@ -25,7 +25,7 @@ La contraseña se introduce de forma interactiva. No la pongas en comandos, capt
 - Imagen oficial Node 24 fijada por digest; la versión comprobada dentro del contenedor es 24.22.2.
 - Usuario node (UID 1000), raíz de solo lectura y escritura limitada al volumen de datos y /tmp.
 - Solo se publica 127.0.0.1:4320. La escucha 0.0.0.0 está dentro del contenedor; la instalación normal conserva 127.0.0.1.
-- La imagen se construye con lista permitida de fuentes. No incorpora data/, .env, credenciales locales, materiales del máster ni el programa temporal de revisión.
+- La imagen se construye con lista permitida de fuentes. No incorpora data/, .env, credenciales locales.
 - La conexión a Ollama usa host.docker.internal:11434; comprobada en este equipo. CHANGELAB_OLLAMA_URL permite localhost, loopback, host.docker.internal o el servicio ollama; se rechazan direcciones remotas y modelos cloud.
 - En otro equipo, la conectividad con Ollama debe comprobarse. No hace falta abrir Ollama a internet; el modo manual sigue disponible.
 
@@ -53,9 +53,3 @@ La copia se guarda dentro de /app/data/backups y comparte el volumen de datos. H
 La restauración admite solo un destino nuevo, sin sustituir la base activa. Para usarla dentro del contenedor, proporciona un destino dentro de /app/data. Consulta copias-locales.md y conserva el manifiesto con el SQLite.
 
 Parar y recrear el contenedor conserva el volumen; eliminar un volumen elimina sus datos. Las cuentas y operaciones de la instalación habitual de 4317 no se trasladan automáticamente.
-
-## Evidencias de esta revisión
-
-Se utilizó el proyecto de prueba changelab-review, independiente del volumen que creará el arranque normal. Se comprobó arranque saludable, UID 1000, conexión con Ollama y su digest, copia SQLite, persistencia tras reinicio y ausencia de cuentas predeterminadas. Ver [revisión de entrega](revision-entrega.md). Al cerrar la revisión se para ese proyecto; los volúmenes se conservan.
-
-Referencia docente: M0458, Docker Hub, y la unidad de contenerización inventariada. Configuración contrastada con [servicios de Compose](https://docs.docker.com/reference/compose-file/services/) y [redes de Compose](https://docs.docker.com/compose/how-tos/networking/). No se ha hecho push de imágenes ni publicado un repositorio.

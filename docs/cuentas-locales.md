@@ -48,4 +48,4 @@ Los autores elena/marcos/lucia de propuestas anteriores son identidades de la et
 
 No se implementan todavía MFA, OIDC/SSO, recuperación de contraseña, cambio de contraseña, gestión web de usuarios, caducidad por inactividad ni auditoría completa de eventos de acceso. Las sesiones tienen caducidad absoluta y revocación al salir. No publicar esta instancia HTTP en Internet: antes se necesitan HTTPS, cookie Secure y revisión de la solución de identidad/despliegue.
 
-Las bases contienen hashes de contraseñas y deben mantenerse fuera de Git y protegerse al realizar copias de seguridad. data/ está ignorada. La evaluación del TFM necesitará un entorno de prueba o instrucciones de configuración; no distribuir una contraseña personal como credencial de demostración.
+La base contiene hashes de contraseñas. Protege las copias de seguridad y conserva los archivos SQLite fuera del repositorio.

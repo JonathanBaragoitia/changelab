@@ -1,6 +1,6 @@
 # Dependencias de terceros
 
-El código del proyecto no incorpora código docente del máster. La licencia del código propio aún no se ha decidido para publicación.
+La licencia del código propio aún no se ha decidido para publicación.
 
 ## PDF.js
 

@@ -1,6 +1,6 @@
 # ChangeLab · Norte AutoCare
 
-ChangeLab es una tienda ficticia de productos para el automóvil y su aplicación de gestión. El caso principal del TFM es una tarifa nueva de proveedor. Oficina comprueba el documento y prepara una simulación. Dirección puede ver qué ocurre con el margen si conserva el precio de venta o si lo ajusta, y autoriza por separado los cambios comerciales.
+ChangeLab reúne una tienda de productos para el automóvil y un panel de gestión de pedidos, almacén y proveedores. Oficina comprueba el documento y prepara una simulación. Dirección puede ver qué ocurre con el margen si conserva el precio de venta o si lo ajusta, y autoriza por separado los cambios comerciales.
 
 ## Arranque local
 
@@ -17,17 +17,9 @@ Abre [gestión](http://127.0.0.1:4317/gestion) o [tienda](http://127.0.0.1:4317/
 
 La instalación local escucha por defecto en `127.0.0.1:4317` y guarda SQLite en `data/changelab.sqlite`. `PORT` y `CHANGELAB_DB` permiten elegir otros valores. Usa `.env.example` como guía de configuración.
 
-### Demo para la defensa
+### Cuentas de gestión
 
-```sh
-npm run demo:tfm
-```
-
-Abre [la demo](http://127.0.0.1:4323/gestion). La terminal muestra las tres cuentas temporales para esa ejecución. La base ficticia vive en memoria y el correo se queda en vista previa. El [guion de defensa](docs/guia-demostracion.md) indica qué PDF cargar y qué resultados comparar.
-
-Para una instalación persistente, `npm run users:create` o `create-user.cmd` crea cuentas con contraseña de al menos nueve caracteres. Elige `owner` para Dirección, `office` para Oficina y `warehouse` para Almacén. Los roles técnicos anteriores se conservan por compatibilidad. [Cuentas locales](docs/cuentas-locales.md) · [Roles de empresa](docs/roles-empresa.md).
-
-El escenario mensual del puerto 4318 requiere datos generados previamente. Para una revisión desde cero, usa la demo de defensa.
+`npm run users:create` (o `create-user.cmd` en Windows) crea cuentas con contraseña de al menos nueve caracteres. Elige `owner` para Dirección, `office` para Oficina y `warehouse` para Almacén. Los roles técnicos anteriores se conservan por compatibilidad. [Cuentas locales](docs/cuentas-locales.md) · [Roles de empresa](docs/roles-empresa.md).
 
 ### Ollama
 
@@ -84,8 +76,8 @@ La imagen de verificación ejecuta `npm run check`. Compose publica el puerto 43
 
 `npm run db:backup` crea una copia SQLite verificada. `npm run db:restore -- <copia> <destino-nuevo>` permite comprobar la recuperación en una ubicación nueva. [Copias y recuperación](docs/copias-locales.md).
 
-## Alcance y entrega
+## Límites operativos
 
-El alcance es una demostración local con catálogo ficticio, documentos sin validez fiscal y pagos de demostración. El abono de proveedor es documental. El margen es una estimación por artículo y la utilidad comercial queda por validar con usuarios. Los PDF escaneados requieren texto obtenido mediante OCR externo.
+El catálogo inicial contiene datos ficticios. Los pagos se simulan y los documentos fiscales carecen de validez. El abono de proveedor se registra como documento y el margen se calcula por artículo. Los PDF escaneados requieren texto obtenido mediante OCR externo.
 
-[Revisión de entrega](docs/revision-entrega.md) · [Guion de defensa](docs/guia-demostracion.md) · [Presentación (PowerPoint)](docs/ChangeLab-presentacion.pptx) · [Estado de entrega](docs/entrega-tfm.md) · [Dependencias de terceros](docs/dependencias-terceros.md).
+[Dependencias de terceros](docs/dependencias-terceros.md).

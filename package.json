@@ -9,7 +9,6 @@
   "scripts": {
     "mail:worker": "node --env-file-if-exists=.env src/mail-worker.ts",
     "dev": "node --env-file-if-exists=.env --watch src/server.ts",
-    "demo:tfm": "node src/scenarios/defense.ts",
     "start": "node --env-file-if-exists=.env src/server.ts",
     "test": "node --test --test-concurrency=2 tests/*.test.ts tests/*.test.mjs",
     "typecheck": "tsc --project tsconfig.json",

@@ -28,8 +28,8 @@ La tienda permite consultar productos, gestionar una cuenta, realizar pedidos de
 | CA09 | Los datos persistentes se pueden recuperar al volver a abrir la base.                      |
 | CA10 | La interfaz muestra los estados y los límites del flujo.                                   |
 
-## Alcance de la entrega
+## Límites operativos
 
-La demo usa datos ficticios. Los pagos son simulados, los documentos fiscales son ejemplos y el correo funciona en vista previa. Los cálculos comerciales muestran margen unitario bruto. La evaluación del modelo usa casos sintéticos.
+El catálogo inicial contiene datos ficticios. Los pagos se simulan, los documentos fiscales son ejemplos y el correo funciona en vista previa. Los cálculos comerciales muestran margen unitario bruto. La evaluación del modelo usa casos sintéticos.
 
-[Arquitectura](arquitectura-actual.md) · [Roles](roles-empresa.md) · [Evidencias](criterios-y-evidencias.md) · [Demostración](guia-demostracion.md)
+[Arquitectura](arquitectura-actual.md) · [Roles](roles-empresa.md)

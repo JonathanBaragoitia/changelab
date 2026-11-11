@@ -10,3 +10,7 @@ coverage/
 
 # Capturas históricas locales pendientes de revisión individual.
 /docs/**/*.png
+
+/src/scenarios/
+/start-month-scenario.cmd
+/docs/evaluations/

@@ -70,5 +70,3 @@ Los mensajes se guardan en la base privada del proyecto y la consulta de oficina
 248/248 pruebas completas. Nuevos casos: guardado atómico, rollback si falla la cola, un mensaje por hito, no enviar al tramitar, captura sin red, reintentos con la misma clave, concurrencia, entrega interrumpida, destinatarios reservados bloqueados, adaptador HTTP controlado, permisos, `.eml`, enlaces seguros, escape de HTML y detalle visible del envío. TypeScript, formato y sintaxis de 39 scripts comprobados.
 
 Antes de activar el servicio se hicieron copias SQLite verificadas de ambas bases. Comparación posterior: productos, inventario y pedidos idénticos; quick_check correcto, cero referencias rotas y auditoría válida. Para el pedido actual se prepararon únicamente dos copias de revisión, sin envío externo. Verificación visual de los datos en Mis pedidos y de ambos correos en la cuenta de Ana.
-
-Referencias docentes: M0001, casos de uso, M0122, pruebas, M0630, seguridad de APIs. Las reglas de avisar al recoger, mostrar la expedición y preparar correo transaccional son requisitos del usuario; el proveedor y el diseño de outbox son decisiones de implementación.

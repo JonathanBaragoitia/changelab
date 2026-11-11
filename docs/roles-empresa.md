@@ -38,8 +38,6 @@ Prueba visual de oficina sobre copia SQLite aislada: pedido ficticio preparado p
 
 Evidencias: `revision-20261104/aviso-mario-ana.png` y `revision-20261104/almacen-roles-final.png`.
 
-Aplicación del material: M0001, casos de uso, M0122, pruebas, M0135, usabilidad, M0630, seguridad de APIs. Los perfiles concretos y su matriz de decisión son requisitos del usuario, no requisitos oficiales del máster.
-
 Comprobación final de datos: `inventory`, `sales` y `products` coinciden mediante huella con las copias previas en ambas bases; quick_check correcto, cero referencias rotas y cadena de auditoría válida. La bandeja identifica al destinatario y evita mostrar avisos de otra cuenta si se cambia de sesión en otra pestaña; pide actualizar la vista en ese caso.
 
 ## Actualización del 05/11/2026 · Correo saliente

@@ -584,7 +584,7 @@ function renderCatalog() {
     heading(
       'DATOS DEL ESPACIO',
       'El catálogo, al día.',
-      'Suministros para talleres y centros de detailing: lavado, interior, llantas, cristales y acabado. Importes ficticios para el TFM.',
+      'Suministros para talleres y centros de detailing: lavado, interior, llantas, cristales y acabado.',
     ) +
     '<section class="panel"><div class="catalog-head"><p>' +
     data.products.length +
