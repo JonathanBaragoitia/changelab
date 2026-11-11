@@ -54,7 +54,7 @@ if (!stdin.isTTY) {
       role: actor.role,
     });
     console.log(
-      'Cuenta creada. Inicia sesión en ChangeLab. Reparto empresarial: owner para Dirección, office para Oficina y warehouse para Almacén.',
+      'Cuenta creada. Inicia sesión en Norte Gestión. Reparto empresarial: owner para Dirección, office para Oficina y warehouse para Almacén.',
     );
   } catch (error) {
     console.error(error instanceof Error ? error.message : 'No se pudo crear la cuenta.');

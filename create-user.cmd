@@ -7,7 +7,7 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-echo ChangeLab - Crear cuenta
+echo Crear cuenta de gestion
 node --env-file-if-exists=.env src\setup-users.ts
 set "CHANGELAB_RESULT=%ERRORLEVEL%"
 pause

@@ -743,9 +743,9 @@ function showLogin(setupRequired) {
   $('#planner-status').textContent = 'Inicia sesión para acceder al espacio.';
   document.querySelectorAll('[data-tab]').forEach((button) => (button.disabled = true));
   $('#screen').innerHTML =
-    '<section class="login-panel panel"><div class="panel-title"><h1>Accede a ChangeLab</h1></div><div class="panel-body"><p>Tu cuenta determina qué puedes preparar, consultar o aprobar.</p>' +
+    '<section class="login-panel panel"><div class="panel-title"><h1>Accede a Norte Gestión</h1></div><div class="panel-body"><p>Tu cuenta determina qué puedes preparar, consultar o aprobar.</p>' +
     (setupRequired
-      ? '<div class="notice"><strong>Primera configuración</strong><p>Todavía no hay cuentas. Ejecuta create-user.cmd en la carpeta changelab. Crea una cuenta con rol editor y otra con rol reviewer; elige tú las contraseñas.</p></div>'
+      ? '<div class="notice"><strong>Primera configuración</strong><p>Todavía no hay cuentas. Ejecuta create-user.cmd en la carpeta changelab. Crea una cuenta de Oficina (office) y otra de Dirección (owner) con tus propias contraseñas.</p></div>'
       : '') +
     '<form id="login-form"><label class="field">Usuario<input name="username" autocomplete="username" minlength="3" maxlength="64" required></label><label class="field">Contraseña<input name="password" type="password" autocomplete="current-password" maxlength="128" required></label><button type="submit" class="primary">Entrar</button><p id="login-error" role="alert"></p></form></div></section>';
   $('#login-form').addEventListener('submit', async (event) => {

@@ -1,6 +1,6 @@
-# Especificación de ChangeLab
+# Especificación de Norte Gestión
 
-ChangeLab conecta una tienda de cuidado del automóvil con el panel de gestión de la empresa. Su caso principal es revisar una tarifa de proveedor, simular su efecto sobre el margen y decidir si se aplica el nuevo coste o se propone un cambio en el precio de venta.
+Norte Gestión conecta una tienda de cuidado del automóvil con el panel de gestión de la empresa. Su caso principal es revisar una tarifa de proveedor, simular su efecto sobre el margen y decidir si se aplica el nuevo coste o se propone un cambio en el precio de venta.
 
 ## Flujo principal
 

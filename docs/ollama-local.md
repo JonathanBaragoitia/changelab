@@ -6,7 +6,7 @@ Instala [Ollama](https://ollama.com/download), inicia el servicio y descarga el 
 ollama pull qwen3:4b-instruct
 ```
 
-ChangeLab consulta Ollama desde el servidor en `http://127.0.0.1:11434`. Usa `CHANGELAB_MODEL` para elegir otro modelo instalado y `CHANGELAB_OLLAMA_URL` si necesitas indicar la dirección del servicio. Para ejecutar ChangeLab en Docker, consulta la [configuración de Compose](docker-local.md).
+Norte Gestión consulta Ollama desde el servidor en `http://127.0.0.1:11434`. Usa `CHANGELAB_MODEL` para elegir otro modelo instalado y `CHANGELAB_OLLAMA_URL` si necesitas indicar la dirección del servicio. Para ejecutar Norte Gestión en Docker, consulta la [configuración de Compose](docker-local.md).
 
 ## Qué hace el modelo
 

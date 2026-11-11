@@ -1,12 +1,12 @@
-# ChangeLab · Norte AutoCare
+# Norte Gestión
 
-ChangeLab reúne una tienda de productos para el automóvil y un panel de gestión de pedidos, almacén y proveedores. Oficina comprueba el documento y prepara una simulación. Dirección puede ver qué ocurre con el margen si conserva el precio de venta o si lo ajusta, y autoriza por separado los cambios comerciales.
+Norte Gestión es la aplicación con la que Norte AutoCare gestiona sus pedidos, almacén y proveedores. Cuando llega una tarifa nueva, Oficina comprueba el documento y prepara una simulación. Dirección puede ver qué ocurre con el margen si conserva el precio de venta o si lo ajusta, y autoriza por separado los cambios comerciales.
 
 ## Arranque local
 
 Requisitos: **Node.js 24.12 o posterior de la rama 24** y npm. Node ejecuta los archivos TypeScript directamente. La comprobación de tipos se hace en un paso aparte. [Soporte de TypeScript en Node](https://nodejs.org/docs/latest-v24.x/api/typescript.html).
 
-Desde la carpeta de ChangeLab:
+Desde la carpeta de Norte Gestión:
 
 ```sh
 npm ci

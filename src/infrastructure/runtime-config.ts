@@ -10,7 +10,7 @@ export function serverAddress(env: NodeJS.ProcessEnv = process.env) {
     port < 1 ||
     port > 65535
   )
-    throw new Error('Invalid ChangeLab host or port');
+    throw new Error('Invalid Norte Gestión host or port');
   return { host, port };
 }
 export function ollamaBase(value = process.env.CHANGELAB_OLLAMA_URL ?? 'http://127.0.0.1:11434') {

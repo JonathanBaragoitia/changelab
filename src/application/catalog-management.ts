@@ -66,7 +66,7 @@ export class ManageCatalog {
       fail(
         400,
         'INVALID_PRODUCT',
-        'Campos no permitidos. Los precios existentes se cambian desde ChangeLab.',
+        'Campos no permitidos. Los precios existentes se cambian desde Norte Gestión.',
       );
     return this.repository.transaction(() => {
       if (id) {

@@ -1,6 +1,6 @@
 # Arquitectura actual
 
-ChangeLab usa un monolito modular con Node.js y SQLite.
+Norte Gestión usa un monolito modular con Node.js y SQLite.
 
 ```mermaid
 flowchart LR
@@ -38,6 +38,6 @@ Una devolución de mercancía, un reembolso y una rectificación fiscal son oper
 
 ## Alcance operativo
 
-ChangeLab está preparado para una instalación local con SQLite. Las pruebas de integración cubren recorridos de negocio, permisos y persistencia. La guía de [copias y recuperación](copias-locales.md) describe cómo comprobar una restauración en un destino separado.
+Norte Gestión está preparado para una instalación local con SQLite. Las pruebas de integración cubren recorridos de negocio, permisos y persistencia. La guía de [copias y recuperación](copias-locales.md) describe cómo comprobar una restauración en un destino separado.
 
 La vista de almacén muestra las últimas 50 operaciones de cada listado de recepciones y movimientos. La auditoría filtra y pagina las 1.000 entradas más recientes. Los registros anteriores se conservan en SQLite. La consulta del historial completo desde la interfaz requeriría filtros y paginación en el servidor. La automatización de los recorridos principales en navegador complementaría las pruebas HTTP. Un despliegue compartido requeriría definir el acceso y la conservación de copias fuera del equipo.

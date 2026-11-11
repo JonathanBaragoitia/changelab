@@ -241,7 +241,7 @@ test('API: sesión autenticada, origen, JSON y doble publicación concurrente', 
   assert.equal(store.audit().filter((a) => a.action === 'proposal.applied').length, 1);
   const html = await fetch(url + '/');
   assert.equal(html.status, 200);
-  assert.match(await html.text(), /ChangeLab/);
+  assert.match(await html.text(), /Norte Gestión/);
   assert.ok(html.headers.get('content-security-policy')?.includes("script-src 'self'"));
 });
 

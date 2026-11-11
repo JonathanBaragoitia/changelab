@@ -1573,7 +1573,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const store = new Store(process.env.CHANGELAB_DB ?? resolve(root, 'data', 'changelab.sqlite'));
   const server = makeServer(store),
     { host, port } = serverAddress();
-  server.listen(port, host, () => console.log('ChangeLab · http://127.0.0.1:' + port));
+  server.listen(port, host, () => console.log('Norte Gestión · http://127.0.0.1:' + port));
   const stop = () =>
     server.close(() => {
       store.close();

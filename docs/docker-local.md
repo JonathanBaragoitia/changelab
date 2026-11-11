@@ -1,4 +1,4 @@
-# Ejecutar ChangeLab con Docker
+# Ejecutar Norte Gestión con Docker
 
 Docker Compose arranca una instancia local con un volumen propio para SQLite.
 

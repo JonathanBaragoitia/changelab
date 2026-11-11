@@ -1,6 +1,6 @@
 # Copias y restauración local
 
-ChangeLab usa la API de copia en línea de SQLite a través de `node:sqlite`.
+Norte Gestión usa la API de copia en línea de SQLite a través de `node:sqlite`.
 
 ## Crear copia
 

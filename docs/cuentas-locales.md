@@ -24,7 +24,7 @@ Si cambias CHANGELAB_DB, ejecuta la utilidad con el mismo archivo .env o entorno
 
 ## Uso
 
-1. Abre ChangeLab y entra con la cuenta de Oficina.
+1. Abre Norte Gestión y entra con la cuenta de Oficina.
 2. Prepara y simula una propuesta.
 3. Cierra sesión. Entra con la cuenta de Dirección para revisar y autorizar el cambio.
 4. Cerrar sesión revoca el token en el servidor. La sesión caduca a las ocho horas; iniciar sesión otra vez desde el mismo navegador sustituye la cookie y revoca su sesión anterior.
