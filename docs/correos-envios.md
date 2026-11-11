@@ -53,7 +53,7 @@ El proceso web guarda los mensajes; la entrega externa se ejecuta en un trabajad
 npm run mail:worker
 ```
 
-`--once` permite procesar un lote y terminar. Por defecto usa la base habitual; `CHANGELAB_DB` permite seleccionar otra base existente. El mes simulado se mantiene en revisión local. La configuración por sí sola no inicia un trabajador ni prueba que el remitente haya sido verificado por el proveedor.
+`--once` permite procesar un lote y terminar. Por defecto usa la base habitual; `CHANGELAB_DB` permite seleccionar otra base existente. La configuración por sí sola no inicia un trabajador ni prueba que el remitente haya sido verificado por el proveedor.
 
 ## Reintentos y límites
 
@@ -64,9 +64,3 @@ Cada petición usa el identificador persistente del mensaje como clave de idempo
 Se ha contrastado el contrato de envío con la [API oficial](https://resend.com/docs/api-reference/emails/send-email). Las pruebas usan un transporte controlado: no equivalen a una entrega real con una cuenta verificada. No se ha implementado recepción de buzón, notificaciones de rebote, confirmaciones de entrega por webhook ni integración con empresas de transporte.
 
 Los mensajes se guardan en la base privada del proyecto y la consulta de oficina muestra los últimos 100.
-
-## Comprobaciones
-
-248/248 pruebas completas. Nuevos casos: guardado atómico, rollback si falla la cola, un mensaje por hito, no enviar al tramitar, captura sin red, reintentos con la misma clave, concurrencia, entrega interrumpida, destinatarios reservados bloqueados, adaptador HTTP controlado, permisos, `.eml`, enlaces seguros, escape de HTML y detalle visible del envío. TypeScript, formato y sintaxis de 39 scripts comprobados.
-
-Antes de activar el servicio se hicieron copias SQLite verificadas de ambas bases. Comparación posterior: productos, inventario y pedidos idénticos; quick_check correcto, cero referencias rotas y auditoría válida. Para el pedido actual se prepararon únicamente dos copias de revisión, sin envío externo. Verificación visual de los datos en Mis pedidos y de ambos correos en la cuenta de Ana.

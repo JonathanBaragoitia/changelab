@@ -58,7 +58,7 @@ export async function mountWarehouse(data, { api, esc, toast, reload, navigate }
       (purchases === null
         ? '<p role="alert">No se pudieron consultar las compras pendientes. Actualiza los datos para conocer la previsión.</p>'
         : '') +
-      '<table><thead><tr><th>Producto</th><th>Stock actual</th><th>Pendiente de recibir</th><th>Última recepción</th><th>Stock previsto</th></tr></thead><tbody>' +
+      '<table><thead><tr><th>Producto</th><th>Stock actual</th><th>Pendiente de recibir</th><th>Recepción reciente</th><th>Stock previsto</th></tr></thead><tbody>' +
       data.inventory
         .filter((row) => data.products.some((p) => p.id === row.productId))
         .map((row) => {

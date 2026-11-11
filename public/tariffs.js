@@ -131,7 +131,7 @@ export async function mountTariffs(data, { api, esc, money, toast, reload }) {
             )
             .join('') +
           '</tbody></table></div>'
-        : '<p>No hay archivos de tarifas guardados en esta base. Las tarifas introducidas manualmente no tienen un PDF original. Importa un archivo o selecciona el mes simulado para consultar los ejemplos.</p>');
+        : '<p>No hay archivos de tarifas guardados en esta base. Las tarifas introducidas manualmente no tienen un PDF original. Importa un archivo para conservar el documento original.</p>');
     const selectTab = (section) => {
       tariffSection = section;
       prices.hidden = section !== 'prices';

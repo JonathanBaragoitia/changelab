@@ -51,22 +51,6 @@ let actor = null;
 let proposalFilter = 'all';
 let csrf = null;
 let auditFilter = { from: '', to: '', query: '', page: 1 };
-// Son dos bases separadas, no un filtro que oculta movimientos del almacén actual.
-const localSpaces =
-  ['127.0.0.1', 'localhost'].includes(location.hostname) &&
-  ['4317', '4318'].includes(location.port);
-$('#data-space-control').hidden = !localSpaces;
-$('#data-space').value = location.port === '4318' ? 'month' : 'regular';
-$('#data-space').addEventListener('change', (event) => {
-  if (!localSpaces) return;
-  const target = new URL(
-    event.target.value === 'month'
-      ? 'http://localhost:4318/gestion'
-      : 'http://127.0.0.1:4317/gestion',
-  );
-  target.searchParams.set('section', sectionFromUrl(location.href));
-  location.assign(target.href);
-});
 let loadSequence = 0;
 sessionStorage.removeItem('changelab-actor');
 async function api(path, body) {
@@ -115,12 +99,6 @@ async function load() {
   data = next;
   $('#scenario-label').hidden = !data.scenario;
   $('#scenario-label').textContent = data.scenario ?? '';
-  if (localSpaces) {
-    $('#scenario-label').hidden = false;
-    $('#scenario-label').textContent = data.scenario
-      ? 'Octubre 2026 · mes simulado. Compras, ventas e incidencias de ejemplo. Cambia de base en «Datos».'
-      : 'Datos habituales. Para revisar el mes completo y sus historiales, elige «Octubre 2026 · mes simulado» en «Datos».';
-  }
   actor = data.actor.id;
   $('#account-name').removeAttribute('href');
   $('#account-name').classList.remove('chip');
@@ -183,7 +161,7 @@ function heading(eyebrow, title, subtitle) {
     title +
     '</h1><p>' +
     subtitle +
-    '</p></div><span class="date-note">NORTE / ENTORNO DE DEMOSTRACIÓN</span></section>'
+    '</p></div></section>'
   );
 }
 function stats() {
@@ -615,7 +593,7 @@ function renderCatalog() {
         (o) =>
           '<article class="order"><h3>' +
           esc(o.id) +
-          ' <span class="badge applied">Confirmado</span></h3><p>Estos importes se fijaron al confirmar el pedido. Los artículos archivados pertenecen a la primera demostración y no forman parte del catálogo actual.</p><div class="table-wrap"><table><thead><tr><th>Producto</th><th class="number">Unidades</th><th class="number">Precio confirmado</th></tr></thead><tbody>' +
+          ' <span class="badge applied">Confirmado</span></h3><p>Estos importes se fijaron al confirmar el pedido. El pedido conserva los artículos archivados.</p><div class="table-wrap"><table><thead><tr><th>Producto</th><th class="number">Unidades</th><th class="number">Precio confirmado</th></tr></thead><tbody>' +
           o.lines
             .map(
               (l) =>

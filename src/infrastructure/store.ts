@@ -1,7 +1,7 @@
 import { AUTOCARE_PRODUCTS, CATALOG_VERSION } from './catalog-data.ts';
 import { DatabaseSync } from 'node:sqlite';
 import { createHash, randomUUID } from 'node:crypto';
-import { mkdirSync } from 'node:fs';
+import { closeSync, mkdirSync, openSync } from 'node:fs';
 import { dirname } from 'node:path';
 import type { Product, Proposal, Change } from '../domain/catalog.ts';
 import type { ChangeRepository } from '../application/ports.ts';
@@ -13,7 +13,10 @@ export class Store implements ChangeRepository {
   db: DatabaseSync;
   constructor(path: string, clock: () => string = () => new Date().toISOString()) {
     this.clock = clock;
-    if (path !== ':memory:') mkdirSync(dirname(path), { recursive: true });
+    if (path !== ':memory:') {
+      mkdirSync(dirname(path), { recursive: true, mode: 0o700 });
+      closeSync(openSync(path, 'a', 0o600));
+    }
     this.db = new DatabaseSync(path);
     this.db.exec(
       'PRAGMA foreign_keys=ON; PRAGMA busy_timeout=5000; CREATE TABLE IF NOT EXISTS products(id TEXT PRIMARY KEY,sku TEXT NOT NULL UNIQUE,name TEXT NOT NULL,category TEXT NOT NULL,priceCents INTEGER NOT NULL CHECK(priceCents>0),costCents INTEGER NOT NULL CHECK(costCents>0),version INTEGER NOT NULL DEFAULT 1); CREATE TABLE IF NOT EXISTS orders(id TEXT PRIMARY KEY,status TEXT NOT NULL,lines TEXT NOT NULL); CREATE TABLE IF NOT EXISTS proposals(id TEXT PRIMARY KEY,document TEXT NOT NULL); CREATE TABLE IF NOT EXISTS audit(seq INTEGER PRIMARY KEY AUTOINCREMENT,id TEXT UNIQUE NOT NULL,at TEXT NOT NULL,actor TEXT NOT NULL,action TEXT NOT NULL,detail TEXT NOT NULL,previousHash TEXT NOT NULL,hash TEXT NOT NULL);',

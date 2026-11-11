@@ -9,6 +9,7 @@ import {
   readFileSync,
   writeFileSync,
   mkdirSync,
+  statSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -44,6 +45,13 @@ test('copia online y restauración en destino nuevo conservan datos; cambios pos
   db.prepare('INSERT INTO records VALUES(?,?)').run(2, 'posterior');
   const recovered = await restoreSnapshot(copy, restore),
     check = new DatabaseSync(recovered.path, { readOnly: true });
+  if (process.platform !== 'win32') {
+    for (const directory of [copy, restore]) {
+      assert.equal(statSync(directory).mode & 0o077, 0);
+      assert.equal(statSync(join(directory, 'manifest.json')).mode & 0o077, 0);
+      assert.equal(statSync(join(directory, 'changelab.sqlite')).mode & 0o077, 0);
+    }
+  }
   try {
     assert.equal(check.prepare('SELECT COUNT(*) AS n FROM records').get()!.n, 1);
     assert.equal(check.prepare('SELECT value FROM records').get()!.value, 'original');

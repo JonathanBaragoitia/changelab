@@ -25,14 +25,15 @@ export async function createSnapshot(sourcePath: string, targetDirectory: string
   if (!statSync(source).isFile()) throw Error('La base de origen no es un archivo.');
   const db = new DatabaseSync(source, { readOnly: true });
   try {
-    // Exclusive directory creation prevents the backup API overwriting an existing file.
-    mkdirSync(directory);
+    // Keep the snapshot private from creation and leave existing destinations untouched.
+    mkdirSync(directory, { mode: 0o700 });
     writeFileSync(
       join(directory, 'manifest.json'),
       JSON.stringify({ format: 'changelab-sqlite-v1', status: 'incomplete' }, null, 2),
-      { flag: 'wx' },
+      { flag: 'wx', mode: 0o600 },
     );
     const path = join(directory, 'changelab.sqlite');
+    writeFileSync(path, '', { flag: 'wx', mode: 0o600 });
     await backup(db, path);
     verifyDatabase(path);
     const manifest = {
