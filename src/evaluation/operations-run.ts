@@ -140,7 +140,7 @@ const report = {
     'Seis casos sintéticos de desarrollo, una ejecución. Incluye controles deterministas y llamadas al modelo. No es una evaluación independiente.',
   results,
 };
-await mkdir('docs/evaluations', { recursive: true });
-const path = 'docs/evaluations/operations-' + report.at.replaceAll(':', '-') + '.json';
+await mkdir('data/evaluations', { recursive: true });
+const path = 'data/evaluations/operations-' + report.at.replaceAll(':', '-') + '.json';
 await writeFile(path, JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ path, results }));

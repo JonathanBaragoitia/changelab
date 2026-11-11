@@ -15,7 +15,7 @@ if (!status.available) {
   process.exitCode = 1;
 } else {
   const at = new Date().toISOString(),
-    output = resolve('docs', 'evaluations');
+    output = resolve('data', 'evaluations');
   mkdirSync(output, { recursive: true });
   const stem = resolve(output, 'business-' + at.replaceAll(':', '-'));
   const results: {

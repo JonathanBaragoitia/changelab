@@ -20,4 +20,4 @@ npm run evaluate:review
 npm run evaluate:operations
 ```
 
-Las evaluaciones usan casos sintéticos. Registran el modelo, los resultados por caso y la duración. El informe de revisión distingue las comprobaciones con modelo de las resueltas por reglas.
+Las evaluaciones usan casos sintéticos. Guardan el modelo, los resultados por caso y la duración en `data/evaluations/`. El informe de revisión distingue las comprobaciones con modelo de las resueltas por reglas.

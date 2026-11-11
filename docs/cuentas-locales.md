@@ -18,15 +18,15 @@ También puedes ejecutar npm run users:create desde changelab.
 
 La utilidad pregunta usuario, nombre, rol y contraseña repetida. La contraseña se escribe oculta, admite espacios y debe tener entre 9 y 128 caracteres. No la escribas en el chat, en un argumento del comando ni en el código. Usa una frase larga y exclusiva para esta aplicación.
 
-Crea primero tu cuenta con rol editor. Para probar aprobación, repite la utilidad y crea una cuenta con rol reviewer. El rol viewer permite consultar y calcular escenarios, pero no crear ni publicar propuestas. Elige nombres de usuario en minúsculas de 3–64 caracteres; se admiten letras ASCII, números, punto, guion y guion bajo.
+Usa `office` para preparar propuestas y `owner` para revisarlas y autorizarlas. El rol `warehouse` gestiona las operaciones de almacén. Los nombres de usuario deben tener entre 3 y 64 caracteres y admiten letras ASCII en minúscula, números, punto, guion y guion bajo.
 
 Si cambias CHANGELAB_DB, ejecuta la utilidad con el mismo archivo .env o entorno que usa el servidor. El comando carga .env si existe. La ruta por defecto es data/changelab.sqlite, relativa al proyecto incluso cuando se lanza desde otra carpeta.
 
 ## Uso
 
-1. Abre ChangeLab y entra con la cuenta editora.
+1. Abre ChangeLab y entra con la cuenta de Oficina.
 2. Prepara y simula una propuesta.
-3. Cierra sesión. Otra cuenta con rol revisor puede entrar, revisar y publicar.
+3. Cierra sesión. Entra con la cuenta de Dirección para revisar y autorizar el cambio.
 4. Cerrar sesión revoca el token en el servidor. La sesión caduca a las ocho horas; iniciar sesión otra vez desde el mismo navegador sustituye la cookie y revoca su sesión anterior.
 
 La utilidad de cuentas es administración local: cualquiera que controle la máquina/base puede crear cuentas o alterar datos. La separación de cuentas no demuestra que existan dos personas físicas distintas.

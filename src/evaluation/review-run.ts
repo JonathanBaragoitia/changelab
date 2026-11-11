@@ -264,7 +264,7 @@ const report = {
   cases: cases.map((c) => ({ id: c.id, input: c.input })),
   results,
 };
-await mkdir('docs/evaluations', { recursive: true });
-const path = 'docs/evaluations/review-' + report.at.replaceAll(':', '-') + '.json';
+await mkdir('data/evaluations', { recursive: true });
+const path = 'data/evaluations/review-' + report.at.replaceAll(':', '-') + '.json';
 await writeFile(path, JSON.stringify(report, null, 2) + '\n');
 console.log('REPORT ' + path);

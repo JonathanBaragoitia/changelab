@@ -21,6 +21,13 @@ La instalación local escucha por defecto en `127.0.0.1:4317` y guarda SQLite en
 
 `npm run users:create` (o `create-user.cmd` en Windows) crea cuentas con contraseña de al menos nueve caracteres. Elige `owner` para Dirección, `office` para Oficina y `warehouse` para Almacén. Los roles técnicos anteriores se conservan por compatibilidad. [Cuentas locales](docs/cuentas-locales.md) · [Roles de empresa](docs/roles-empresa.md).
 
+Para comprobar el acceso desde una instalación local nueva, ejecuta `npm run users:create` y crea estas dos cuentas. Introduce cada contraseña dos veces cuando la utilidad la pida. Son valores de ejemplo que solo funcionan si los configuras en tu base local.
+
+| Usuario          | Nombre              | Rol      | Contraseña de prueba   |
+| ---------------- | ------------------- | -------- | ---------------------- |
+| prueba-oficina   | Oficina de prueba   | `office` | `Oficina-Local-2026`   |
+| prueba-direccion | Dirección de prueba | `owner`  | `Direccion-Local-2026` |
+
 ### Ollama
 
 Instala y arranca Ollama en el equipo y descarga el modelo:

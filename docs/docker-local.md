@@ -1,6 +1,6 @@
 # Ejecutar ChangeLab con Docker
 
-Revisión cerrada el 30/10/2026. Docker es una alternativa al arranque habitual, no una publicación en internet.
+Docker Compose arranca una instancia local con un volumen propio para SQLite.
 
 ## Arranque
 
@@ -10,9 +10,9 @@ Desde la carpeta changelab, con Docker Desktop y Ollama iniciados:
 docker compose up --build -d --wait
 ```
 
-Abre gestión en http://127.0.0.1:4320/ y tienda en http://127.0.0.1:4320/tienda. El puerto 4320 evita interferir con la aplicación habitual de 4317. El volumen Docker empieza con datos de demostración y sin cuentas; no importa tu SQLite actual.
+Abre gestión en http://127.0.0.1:4320/ y tienda en http://127.0.0.1:4320/tienda. El puerto 4320 evita interferir con la aplicación habitual de 4317. El volumen Docker empieza con el catálogo inicial y sin cuentas; no importa tu SQLite actual.
 
-Crea tus propias cuentas de edición y revisión, sin contraseñas predeterminadas:
+Crea las cuentas de gestión de la instancia con los roles de [Dirección, Oficina y Almacén](roles-empresa.md).
 
 ```sh
 docker compose exec app npm run users:create
@@ -25,8 +25,8 @@ La contraseña se introduce de forma interactiva. No la pongas en comandos, capt
 - Imagen oficial Node 24 fijada por digest; la versión comprobada dentro del contenedor es 24.22.2.
 - Usuario node (UID 1000), raíz de solo lectura y escritura limitada al volumen de datos y /tmp.
 - Solo se publica 127.0.0.1:4320. La escucha 0.0.0.0 está dentro del contenedor; la instalación normal conserva 127.0.0.1.
-- La imagen se construye con lista permitida de fuentes. No incorpora data/, .env, credenciales locales.
-- La conexión a Ollama usa host.docker.internal:11434; comprobada en este equipo. CHANGELAB_OLLAMA_URL permite localhost, loopback, host.docker.internal o el servicio ollama; se rechazan direcciones remotas y modelos cloud.
+- La imagen se construye con lista permitida de fuentes. No incorpora data/, .env, ni credenciales locales.
+- La conexión a Ollama usa host.docker.internal:11434. CHANGELAB_OLLAMA_URL permite localhost, loopback, host.docker.internal o el servicio ollama; se rechazan direcciones remotas y modelos cloud.
 - En otro equipo, la conectividad con Ollama debe comprobarse. No hace falta abrir Ollama a internet; el modo manual sigue disponible.
 
 CHANGELAB_HTTP_PORT cambia el puerto publicado. CHANGELAB_MODEL elige un modelo local instalado y requiere repetir la evaluación. Una variable CHANGELAB_OLLAMA_URL en .env sustituye el valor de Compose; 127.0.0.1 dentro del contenedor no es el Ollama del equipo.

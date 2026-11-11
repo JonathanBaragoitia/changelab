@@ -13,10 +13,9 @@
       "**/coverage": true,
       "**/data": true,
       "**/node_modules": true,
-    },
-    "search.exclude": {
-      "**/docs/revision-*/**": true,
-      "**/docs/evaluations/**": true,
+      "src/scenarios": true,
+      "start-month-scenario.cmd": true,
+      "AGENTS.md": true,
     },
     "files.watcherExclude": {
       "**/.npm-cache/**": true,
