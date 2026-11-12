@@ -1,6 +1,6 @@
 if (location.hash === '#orders') location.replace('/mis-pedidos');
 if (location.hash === '#basket') location.replace('/carrito');
-import { readBasket, saveBasket } from '/basket-storage.js';
+import { BASKET_LINE_LIMIT, basketPriceChanges, readBasket, saveBasket } from '/basket-storage.js';
 import { searchProducts, mountCatalogAutocomplete } from '/catalog-search.js';
 import { showPaymentSummary } from '/payment-summary.js';
 import { deliveryEstimate } from '/order-tracking.js';
@@ -46,8 +46,35 @@ async function api(path, body) {
   } catch {
     throw new Error('La tienda devolvió una respuesta no válida. Vuelve a cargar la página.');
   }
-  if (!response.ok) throw new Error(value.message || 'No se pudo completar la operación.');
+  if (!response.ok)
+    throw Object.assign(new Error(value.message || 'No se pudo completar la operación.'), {
+      code: value.error,
+    });
   return value;
+}
+function addProduct(id, feedback = $('#message')) {
+  if (busy || catalogState !== 'ready') return false;
+  const product = products.find((p) => p.id === id);
+  if (!product) return false;
+  const previous = cart.get(id);
+  const quantity = (previous?.quantity ?? 0) + 1;
+  if (quantity > Math.min(100, product.quantity)) {
+    feedback.textContent = 'No quedan más unidades disponibles.';
+    return false;
+  }
+  if (!previous && cart.size >= BASKET_LINE_LIMIT) {
+    feedback.textContent = 'El carrito admite hasta ' + BASKET_LINE_LIMIT + ' productos distintos.';
+    return false;
+  }
+  cart.set(id, {
+    productId: id,
+    quantity,
+    expectedPriceCents: previous?.expectedPriceCents ?? product.priceCents,
+  });
+  requestId = crypto.randomUUID();
+  renderCart();
+  $('#message').textContent = product.name + ' añadido al carrito.';
+  return true;
 }
 function renderProducts() {
   if (catalogState !== 'ready') {
@@ -129,20 +156,9 @@ function renderProducts() {
     .forEach((button) =>
       button.addEventListener('click', () => showProduct(button.dataset.details)),
     );
-  document.querySelectorAll('[data-add]').forEach((button) =>
-    button.addEventListener('click', () => {
-      if (busy) return;
-      const p = products.find((p) => p.id === button.dataset.add),
-        quantity = (cart.get(p.id)?.quantity || 0) + 1;
-      if (quantity > Math.min(100, p.quantity)) {
-        $('#message').textContent = 'No quedan más unidades disponibles.';
-        return;
-      }
-      cart.set(p.id, { productId: p.id, quantity, expectedPriceCents: p.priceCents });
-      requestId = crypto.randomUUID();
-      renderCart();
-    }),
-  );
+  document
+    .querySelectorAll('[data-add]')
+    .forEach((button) => button.addEventListener('click', () => addProduct(button.dataset.add)));
 }
 function renderCart() {
   const retained = saveBasket([...cart.values()], requestId);
@@ -153,6 +169,8 @@ function renderCart() {
   if (!retained && cart.size)
     $('#message').textContent =
       'No se puede conservar el carrito al cambiar de página. Permite el almacenamiento del navegador para continuar.';
+  const priceChanges =
+    catalogState === 'ready' ? basketPriceChanges(cart.values(), products) : new Map();
   let total = 0,
     tax = 0;
   $('#cart').innerHTML =
@@ -168,7 +186,11 @@ function renderCart() {
           line.quantity +
           ' × ' +
           money(line.expectedPriceCents) +
-          '</p><button class="chip" data-increase="' +
+          '</p>' +
+          (priceChanges.has(line.productId)
+            ? '<p>Nuevo precio unitario: ' + money(priceChanges.get(line.productId)) + '</p>'
+            : '') +
+          '<button class="chip" data-increase="' +
           esc(line.productId) +
           '" ' +
           (busy || !p || line.quantity >= Math.min(100, p.quantity) ? 'disabled' : '') +
@@ -187,23 +209,30 @@ function renderCart() {
     money(tax) +
     '</p><h3>Total: ' +
     money(total + tax) +
-    '</h3>';
-  $('#confirm').disabled = busy || !cart.size || catalogState !== 'ready';
+    '</h3>' +
+    (priceChanges.size
+      ? '<p role="status">Han cambiado precios. Revisa los nuevos importes antes de continuar.</p><button type="button" id="update-cart-prices" class="chip"' +
+        (busy ? ' disabled' : '') +
+        '>Actualizar precios del carrito</button>'
+      : '');
+  $('#confirm').disabled = busy || !cart.size || catalogState !== 'ready' || priceChanges.size > 0;
   $('#checkout').hidden = !cart.size;
   if (!cart.size)
     $('#cart').innerHTML =
       '<p>Tu carrito está vacío.</p><a class="chip" href="/tienda">Explorar catálogo</a>';
-  document.querySelectorAll('[data-increase]').forEach((button) =>
-    button.addEventListener('click', () => {
-      if (busy) return;
-      const line = cart.get(button.dataset.increase),
-        product = products.find((p) => p.id === button.dataset.increase);
-      if (!line || !product || line.quantity >= Math.min(100, product.quantity)) return;
-      line.quantity++;
-      requestId = crypto.randomUUID();
-      renderCart();
-    }),
-  );
+  $('#update-cart-prices')?.addEventListener('click', () => {
+    if (busy || catalogState !== 'ready') return;
+    for (const [id, price] of priceChanges) cart.get(id).expectedPriceCents = price;
+    requestId = crypto.randomUUID();
+    renderCart();
+    $('#message').textContent = 'Precios actualizados. Comprueba el nuevo total.';
+    $('#confirm').focus();
+  });
+  document
+    .querySelectorAll('[data-increase]')
+    .forEach((button) =>
+      button.addEventListener('click', () => addProduct(button.dataset.increase)),
+    );
   document.querySelectorAll('[data-remove]').forEach((button) =>
     button.addEventListener('click', () => {
       if (busy) return;
@@ -261,7 +290,7 @@ $('#category').addEventListener('change', () => {
 });
 $('#checkout').addEventListener('submit', (event) => {
   event.preventDefault();
-  if (busy || !cart.size || catalogState !== 'ready') return;
+  if (busy || catalogState !== 'ready' || $('#confirm').disabled) return;
   const form = event.target;
   const customer = {
     name: form.elements.name.value,
@@ -294,6 +323,15 @@ $('#checkout').addEventListener('submit', (event) => {
         } catch {
           $('#message').textContent += ' No se pudo actualizar el catálogo; reintenta su carga.';
         }
+      } catch (error) {
+        if (error.code === 'PRICE_CHANGED') {
+          try {
+            await refresh();
+          } catch {
+            // The catalog displays a retry button if refreshing fails.
+          }
+        }
+        throw error;
       } finally {
         busy = false;
         renderCart();
@@ -362,17 +400,7 @@ function showProduct(id) {
     '>Añadir una unidad al carrito</button></article>';
   dialog.setAttribute('aria-labelledby', 'product-title');
   dialog.querySelector('#detail-add').addEventListener('click', () => {
-    if (busy) return;
-    const quantity = (cart.get(id)?.quantity ?? 0) + 1;
-    if (quantity > Math.min(100, product.quantity)) {
-      dialog.querySelector('#detail-add').textContent = 'No hay más unidades disponibles';
-      return;
-    }
-    cart.set(id, { productId: id, quantity, expectedPriceCents: product.priceCents });
-    requestId = crypto.randomUUID();
-    renderCart();
-    dialog.close();
-    $('#message').textContent = 'Producto añadido al carrito.';
+    if (addProduct(id, dialog.querySelector('#detail-add'))) dialog.close();
   });
   dialog.showModal();
 }
@@ -515,19 +543,5 @@ mountShoppingAssistant({
   esc,
   money,
   showProduct,
-  addProduct: (id) => {
-    if (busy || catalogState !== 'ready') return false;
-    const product = products.find((p) => p.id === id);
-    if (!product) return false;
-    const quantity = (cart.get(id)?.quantity ?? 0) + 1;
-    if (quantity > Math.min(100, product.quantity)) {
-      $('#message').textContent = 'No quedan más unidades disponibles.';
-      return false;
-    }
-    cart.set(id, { productId: id, quantity, expectedPriceCents: product.priceCents });
-    requestId = crypto.randomUUID();
-    renderCart();
-    $('#message').textContent = product.name + ' añadido al carrito.';
-    return true;
-  },
+  addProduct,
 });

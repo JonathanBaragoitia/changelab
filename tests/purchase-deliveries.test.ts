@@ -36,11 +36,22 @@ test('envío y recepciones parciales: stock exacto, reintento y exceso bloqueado
   );
   const editor = { id: 'editor', role: 'editor' },
     reviewer = { id: 'reviewer', role: 'reviewer' };
-  const p = purchases.create(editor, {
+  const request = {
+    requestId: randomUUID(),
     supplierId: 'supplier',
     reason: 'Reponer champú',
     lines: [{ productId: 'nc1', quantity: 20 }],
-  });
+  };
+  const p = purchases.create(editor, request);
+  assert.deepEqual(
+    purchases.create(editor, { ...request, lines: [{ quantity: 20, productId: 'nc1' }] }),
+    p,
+  );
+  assert.equal(repo.all().length, 1);
+  assert.throws(
+    () => purchases.create(editor, { ...request, lines: [{ quantity: 21, productId: 'nc1' }] }),
+    { code: 'PURCHASE_REUSED' },
+  );
   purchases.transition(reviewer, p.id, { action: 'approve', expectedVersion: 1 });
   const delivery = {
     action: 'receive-partial',

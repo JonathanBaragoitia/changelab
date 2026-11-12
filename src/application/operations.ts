@@ -147,8 +147,14 @@ export class Purchases {
     if (!/^[\w-]+$/.test(requestId)) fail(400, 'INVALID_ID', 'Referencia no válida.');
     const supplierId = text(body.supplierId, 1, 80),
       reason = text(body.reason, 5, 300);
-    if (!Array.isArray(body.lines) || !body.lines.length || body.lines.length > 30)
+    const requestedLines = body.lines;
+    if (!Array.isArray(requestedLines) || !requestedLines.length || requestedLines.length > 30)
       fail(400, 'INVALID_LINES', 'Selecciona entre 1 y 30 artículos.');
+    const requested = requestedLines.map((raw) => {
+      const line = object(raw);
+      fields(line, ['productId', 'quantity']);
+      return { productId: line.productId, quantity: integer(line.quantity, 1, 10000) };
+    });
     return this.repo.transaction(() => {
       const previous = this.repo.get(requestId);
       if (previous) {
@@ -161,7 +167,7 @@ export class Purchases {
           previous.replacesId !== replacesId ||
           previous.supplierId !== supplierId ||
           previous.reason !== reason ||
-          JSON.stringify(original) !== JSON.stringify(body.lines)
+          JSON.stringify(original) !== JSON.stringify(requested)
         )
           fail(409, 'PURCHASE_REUSED', 'Operación de compra usada con otros datos.');
         return previous;
@@ -170,15 +176,12 @@ export class Purchases {
       if (!supplier?.active) fail(409, 'SUPPLIER_UNAVAILABLE', 'Selecciona un proveedor activo.');
       const catalog = this.catalog(),
         seen = new Set<string>();
-      const lines = (body.lines as unknown[]).map((raw) => {
-        const r = object(raw);
-        fields(r, ['productId', 'quantity']);
-        const product = catalog.find((p) => p.id === r.productId);
+      const lines = requested.map(({ productId, quantity }) => {
+        const product = catalog.find((p) => p.id === productId);
         if (!product || seen.has(product.id))
           fail(400, 'INVALID_PRODUCT', 'Artículo desconocido o repetido.');
         seen.add(product.id);
         const offer = this.offer?.(supplierId, product.id);
-        const quantity = integer(r.quantity, 1, 10000);
         if (this.offer && !offer)
           fail(409, 'SUPPLIER_PRODUCT', 'El proveedor no suministra este artículo.');
         if (offer && quantity % offer.packUnits !== 0)
